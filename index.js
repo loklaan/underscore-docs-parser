@@ -2,7 +2,6 @@
 
 "use strict";
 
-let argv     = require('yargs').argv;
 let program  = require('commander');
 let chalk    = require('chalk');
 let path     = require('path');
