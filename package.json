@@ -1,6 +1,6 @@
 {
   "name": "underscore-docs-parser",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Scrapes Underscore.js documentation to generate an easy to consume JSON representation.",
   "main": "index.js",
   "bin": {
