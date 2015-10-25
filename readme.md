@@ -35,6 +35,9 @@ _Note: This tool will only work for the specific html written by jashkenas, and 
 **string `name`**  
 The Underscore.js method name (strictly top level methods).
 
+**string `url`**  
+The url to the relevant Underscore.js method in the official docs.
+
 **array(string) `aliases`**  
 An array of alias to the above method name. Array will be empty if there are no aliases.
 
@@ -50,6 +53,7 @@ The plain text description for the method (not including code samples).
 [
   {
     "name": "each",
+    "url": "http://underscorejs.org/#each",
     "aliases": [
       "forEach"
     ],

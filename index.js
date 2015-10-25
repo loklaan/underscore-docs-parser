@@ -24,7 +24,8 @@ if (!process.argv.slice(2).length) {
   process.exit(1);
 }
 
-const URL_TO_DOCS = program.url || 'http://raw.githubusercontent.com/jashkenas/underscore/master/index.html';
+const URL_TO_DOCS = 'http://underscorejs.org/';
+const URL_TO_DOCS_HTML = program.url || 'http://raw.githubusercontent.com/jashkenas/underscore/master/index.html';
 
 const IS_STREAMING = program.stream != null;
 const IS_WRITING = !IS_STREAMING && program.output != null;
@@ -53,8 +54,8 @@ function logTitle() {
 }
 logTitle();
 
-log(`Fetching documentation from ${chalk.blue(URL_TO_DOCS)}...`);
-got(URL_TO_DOCS)
+log(`Fetching documentation from ${chalk.blue(URL_TO_DOCS_HTML)}...`);
+got(URL_TO_DOCS_HTML)
   .then(resolveResponseToDom)
   .then(parseDocDomToDocJson)
   .catch(logError);
@@ -92,8 +93,10 @@ function parseDocDomToDocJson(dom) {
     // (Ignores methods like 'value')
     if (!isTopLevelApiMethod) return false;
 
+    // Structure of the resulting JSON data entries
     let entry = {
       name: '',
+      url: '',
       aliases: [],
       arguments: [],
       description: ''
@@ -109,6 +112,9 @@ function parseDocDomToDocJson(dom) {
 
     // API method arguments
     entry.arguments = _compact(doc.children('code').text().match(/_\.\w+\((.*)\)/)[1].split(', '));
+
+    // API method url
+    entry.url = `${URL_TO_DOCS}#${doc.attr('id')}`;
 
     // API method description
     doc.children().remove('.header, code, .alias, br');
