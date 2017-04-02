@@ -1,5 +1,7 @@
 # Underscore Docs Parser
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/loklaan/underscore-docs-parser.svg)](https://greenkeeper.io/)
+
 CLI that scrapes Underscore.js documentation to generate an easy to consume JSON representation.
 
 ## Install
